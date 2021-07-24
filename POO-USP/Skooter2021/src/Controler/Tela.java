@@ -1,0 +1,296 @@
+package Controler;
+
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Point;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
+import Auxiliar.AutoSave;
+import Auxiliar.Consts;
+import Auxiliar.Desenhador;
+import Auxiliar.SerializaDesserializaArquivos;
+import Controler.strategies.Key;
+import Controler.strategies.Keys;
+import Modelo.Elemento;
+import Modelo.Hero;
+
+@SuppressWarnings("serial")
+public class Tela extends javax.swing.JFrame implements KeyListener, MouseListener {
+
+	private Hero hHero;
+	private ArrayList<Elemento> eElementos;
+	private ControleDeJogo cControle = new ControleDeJogo();
+	private Graphics g2;
+	private int faseAtual;
+	private int vidasHeroi;
+
+	public Tela() throws Exception {
+		this.faseAtual = 3;
+		this.vidasHeroi = 2;
+
+		File caminhoMusica = new File("." + File.separator + "music" + File.separator + "ost.wav");
+		AudioInputStream audioStream = AudioSystem.getAudioInputStream(caminhoMusica);
+		Clip clip = AudioSystem.getClip();
+		clip.open(audioStream);
+		// clip.start();
+
+		Desenhador.setCenario(this); /* Desenhador funciona no modo estatico */
+		initComponents();
+		this.addKeyListener(this); /* teclado */
+		this.addMouseListener(this);
+
+		/* Cria a janela do tamanho do cenario + insets (bordas) da janela */
+		this.setSize(Consts.RES * Consts.CELL_SIDE + getInsets().left + getInsets().right,
+				Consts.RES * Consts.CELL_SIDE + getInsets().top + getInsets().bottom);
+
+		this.setFase();
+
+		SerializaDesserializaArquivos.serializarElementosJogo();
+
+	}
+
+	public int getVidasHeroi() {
+		return vidasHeroi;
+	}
+
+	public void setVidasHeroi(int vidasHeroi) {
+		this.vidasHeroi = vidasHeroi;
+	}
+
+	/*--------------------------------------------------*/
+	public ControleDeJogo getcControle() {
+		return cControle;
+	}
+
+	public Graphics getG2() {
+		return g2;
+	}
+
+	public Graphics getGraphicsBuffer() {
+		return g2;
+	}
+
+	// Este metodo eh executado a cada Consts.FRAME_INTERVAL milissegundos
+	public void paint(Graphics gOld) {
+		Graphics g = this.getBufferStrategy().getDrawGraphics();
+		/* Criamos um contexto gráfico */
+		g2 = g.create(getInsets().left, getInsets().top, getWidth() - getInsets().right, getHeight() - getInsets().top);
+
+		// Desenha cenário
+		for (int i = 0; i < Consts.RES; i++) {
+			for (int j = 0; j < Consts.RES; j++) {
+				try {
+					// Linha para alterar o background
+					Image newImage = Toolkit.getDefaultToolkit()
+							.getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + "background.png");
+					g2.drawImage(newImage, j * Consts.CELL_SIDE, i * Consts.CELL_SIDE, Consts.CELL_SIDE,
+							Consts.CELL_SIDE, null);
+
+				} catch (IOException ex) {
+					Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
+				}
+			}
+		}
+
+		// Aqui podem ser inseridos novos processamentos de controle
+		if (!this.eElementos.isEmpty()) {
+			this.cControle.desenhaTudo(eElementos);
+			this.cControle.processaTudo(eElementos);
+		}
+
+		g.dispose();
+		g2.dispose();
+		if (!getBufferStrategy().contentsLost()) {
+			getBufferStrategy().show();
+		}
+	}
+
+	public void go() throws Exception {
+		File tempoSaveFile = new File("." + File.separator + "save" + File.separator + "save_config.txt");
+	    Scanner myReader = new Scanner(tempoSaveFile);
+	    String tempoSave = myReader.nextLine();
+		Timer saveTimer = new Timer();
+		AutoSave autoSave = new AutoSave();
+		saveTimer.schedule(autoSave, new Date(), Integer.parseInt(tempoSave));
+
+		TimerTask redesenhar = new TimerTask() {
+			public void run() {
+				repaint(); /* (executa o metodo paint) */
+			}
+		};
+
+		// Redesenha (executa o metodo paint) tudo a cada Consts.FRAME_INTERVAL
+		// milissegundos
+		Timer timer = new Timer();
+		timer.schedule(redesenhar, 0, Consts.FRAME_INTERVAL);
+
+	}
+
+	public void keyPressed(KeyEvent e) {
+		Keys tecla = null;
+
+		for (Keys k : Keys.values()) {
+			if (k.getCode() == e.getKeyCode())
+				tecla = k;
+		}
+
+		Key key = tecla.obterTecla();
+		key.pressed(eElementos, hHero, this);
+
+		if (!cControle.ehPosicaoValida(this.eElementos, hHero.getPosicao(), 0)) {
+			hHero.voltaAUltimaPosicao();
+		}
+
+		this.setTitle("-> Cell: " + (hHero.getPosicao().getColuna()) + ", " + (hHero.getPosicao().getLinha()));
+	}
+
+	/**
+	 * This method is called from within the constructor to initialize the form.
+	 * WARNING: Do NOT modify this code. The content of this method is always
+	 * regenerated by the Form Editor.
+	 */
+	@SuppressWarnings("unchecked")
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// Code">//GEN-BEGIN:initComponents
+	private void initComponents() {
+
+		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+		setTitle("POO2021");
+		setAutoRequestFocus(false);
+		setResizable(false);
+
+		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+		getContentPane().setLayout(layout);
+		layout.setHorizontalGroup(
+				layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 561, Short.MAX_VALUE));
+		layout.setVerticalGroup(
+				layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 500, Short.MAX_VALUE));
+
+		pack();
+	}// </editor-fold>//GEN-END:initComponents
+		// Variables declaration - do not modify//GEN-BEGIN:variables
+		// End of variables declaration//GEN-END:variables
+
+	public void keyTyped(KeyEvent e) {
+	}
+
+	public void keyReleased(KeyEvent e) {
+	}
+
+	public int getFaseAtual() {
+		return faseAtual;
+	}
+
+	public ArrayList<Elemento> setFase() {
+
+		switch (this.faseAtual) {
+		case 0:
+			this.eElementos = new Fase().CriaFase1();
+			break;
+		case 1:
+			this.eElementos = new Fase().CriaFase2();
+			break;
+		case 2:
+			this.eElementos = new Fase().CriaFase3();
+			break;
+		case 3:
+			this.eElementos = new Fase().CriaFase4();
+			break;
+		case 4:
+			System.out.println("FIM DE JOGO!");
+			System.exit(0);
+		}
+
+		hHero = (Hero) eElementos.get(0);
+
+		return this.eElementos;
+	}
+
+	public void setProximaFase() {
+		this.faseAtual++;
+		this.setFase();
+		return;
+	}
+
+	public ArrayList<Elemento> getElementos() {
+		return this.eElementos;
+	}
+
+	public void setElementos(ArrayList<Elemento> elementos) {
+		this.eElementos = elementos;
+	}
+
+	public void setHero(Hero heroi) {
+		this.hHero = heroi;
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		int x = e.getX();
+        int y = e.getY();
+        Point z = e.getLocationOnScreen();
+        
+        this.setTitle("X: "+ x + ", Y: " + y +
+                " -> Cell: " + (y/Consts.CELL_SIDE) + ", " + (x/Consts.CELL_SIDE));
+        
+        JFileChooser fileChooser = new JFileChooser("."+File.separator+"elementos");
+		fileChooser.setDialogTitle("Selecione um elemento");
+		fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("arquivo", "zip");
+		fileChooser.setFileFilter(filter);
+		int retorno = fileChooser.showOpenDialog(this);
+		if(retorno == JFileChooser.APPROVE_OPTION) {
+			File file = fileChooser.getSelectedFile();
+			try {
+				Elemento elemento = (Elemento) SerializaDesserializaArquivos.desserializarObjeto(file.getName());
+				elemento.setPosicao(y/Consts.CELL_SIDE, x/Consts.CELL_SIDE);
+				for(int i = 1; i < eElementos.size(); i++) {
+					Elemento elementoTemp = eElementos.get(i);           
+					if(elementoTemp.getPosicao().estaNaMesmaPosicao(elemento.getPosicao())) {
+						eElementos.remove(i);
+						eElementos.add(elemento);
+					}
+				}
+			} catch (ClassNotFoundException | IOException e1) {
+				e1.printStackTrace();
+			}
+		}
+	}
+
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+
+	}
+}
