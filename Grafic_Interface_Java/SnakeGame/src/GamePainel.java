@@ -6,15 +6,26 @@ public class GamePainel extends JPanel implements Serializable, Runnable {
     private static final long serialVersionUID = 1L;
     public static final int WIDTH = 600;
     public static final int HEIGHT = 600;
+    private Thread thread;
+    private boolean running;
     public GamePainel(){
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        start();
     }
 
     public void start(){
-
+        this.running = true;
+        thread = new Thread(this);
+        thread.start();
     }
 
     public void stop(){
+        this.running = false;
+        try{
+            thread.join();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
 
     }
 
@@ -23,6 +34,10 @@ public class GamePainel extends JPanel implements Serializable, Runnable {
     }
 
     public void paint(Graphics graphics){
+        graphics.clearRect(0,0,WIDTH,HEIGHT);
+        graphics.setColor(Color.BLACK);
+        graphics.fillRect(0,0,WIDTH,HEIGHT);
+
         for(int i = 0; i < WIDTH/10; i++){
             graphics.drawLine(i * 10, 0, i*10, HEIGHT);
         }
@@ -34,6 +49,9 @@ public class GamePainel extends JPanel implements Serializable, Runnable {
 
     @Override
     public void run() {
-
+        while(this.running){
+            tick();
+            repaint();
+        }
     }
 }
