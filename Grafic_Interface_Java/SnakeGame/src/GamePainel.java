@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class GamePainel extends JPanel implements Serializable, Runnable, KeyListener {
     private static final long serialVersionUID = 1L;
@@ -18,6 +19,9 @@ public class GamePainel extends JPanel implements Serializable, Runnable, KeyLis
 
     private BodyPart bodyPart;
     private ArrayList<BodyPart> snake;
+    private Apple apple;
+    private ArrayList<Apple> apples;
+    private Random random;
 
     private int xCoordinate = 10;
     private int yCoordinate = 10;
@@ -28,6 +32,8 @@ public class GamePainel extends JPanel implements Serializable, Runnable, KeyLis
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
         addKeyListener(this);
         snake = new ArrayList<>();
+        apples = new ArrayList<>();
+        random = new Random();
         start();
     }
 
@@ -49,22 +55,35 @@ public class GamePainel extends JPanel implements Serializable, Runnable, KeyLis
 
     public void tick(){
         if(this.snake.size() == 0){
-            bodyPart = new BodyPart(xCoordinate, yCoordinate, 10);
+            bodyPart = new BodyPart(xCoordinate, yCoordinate, 15);
             this.snake.add(bodyPart);
         }
         ticks++;
-        if(ticks > 250000){
+        if(ticks > 600000){
             if (right) xCoordinate++;
             if(left) xCoordinate--;
             if(up) yCoordinate--;
             if(down) yCoordinate++;
 
             ticks = 0;
-            bodyPart = new BodyPart(xCoordinate, yCoordinate, 10);
+            bodyPart = new BodyPart(xCoordinate, yCoordinate, 15);
             this.snake.add(bodyPart);
 
             if(this.snake.size() > this.size){
                 this.snake.remove(0);
+            }
+        }
+        if(apples.size() == 0){
+            int xCoor = random.nextInt(40);
+            int yCoor = random.nextInt(40);
+            apple = new Apple(xCoor, yCoor, 15);
+            apples.add(apple);
+        }
+        for(int i = 0; i < apples.size(); i++){
+            if(xCoordinate == apples.get(i).getxCoordinate() && yCoordinate == apples.get(i).getyCoordinate()){
+                this.size++;
+                apples.remove(i);
+                i++;
             }
         }
     }
@@ -83,6 +102,9 @@ public class GamePainel extends JPanel implements Serializable, Runnable, KeyLis
         }
         for(int i = 0; i < this.snake.size(); i++){
             snake.get(i).draw(graphics);
+        }
+        for(int i = 0; i < apples.size(); i++){
+            apples.get(i).draw(graphics);
         }
     }
 
