@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        GrafoAbstrato grafo = new DigrafoMatriz(new ArrayList<>(){{
+        GrafoAbstrato grafo = new GrafoMatriz(new ArrayList<>(){{
             add(new Vertice("João"));
             add(new Vertice("Maria"));
             add(new Vertice("José"));
