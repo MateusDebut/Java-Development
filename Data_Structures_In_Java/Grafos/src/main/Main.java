@@ -1,9 +1,6 @@
 package main;
 
-import main.grafo.GrafoAbstrato;
-import main.grafo.GrafoLista;
-import main.grafo.GrafoMatriz;
-import main.grafo.Vertice;
+import main.grafo.*;
 
 import java.util.ArrayList;
 
@@ -20,10 +17,13 @@ public class Main {
         grafo.adicionarAresta(grafo.vertices.get(0),grafo.vertices.get(1));
         grafo.adicionarAresta(grafo.vertices.get(0),grafo.vertices.get(2));
         grafo.adicionarAresta(grafo.vertices.get(1),grafo.vertices.get(2));
-        grafo.adicionarAresta(grafo.vertices.get(2),grafo.vertices.get(0));
         grafo.adicionarAresta(grafo.vertices.get(2),grafo.vertices.get(3));
 
-        System.out.println(grafo);
+        //System.out.println(grafo);
+
+        TravessiaEmLargura travessiaEmLargura = new TravessiaEmLargura();
+        String travessia = travessiaEmLargura.travessiaEmGrafo(grafo, grafo.vertices.get(1));
+        System.out.println(travessia);
 
     }
 }
