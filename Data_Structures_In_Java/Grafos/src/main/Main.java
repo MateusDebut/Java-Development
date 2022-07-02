@@ -1,6 +1,7 @@
 package main;
 
 import main.grafo.GrafoAbstrato;
+import main.grafo.GrafoLista;
 import main.grafo.GrafoMatriz;
 import main.grafo.Vertice;
 
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        GrafoAbstrato grafo = new GrafoMatriz(new ArrayList<>(){{
+        GrafoAbstrato grafo = new GrafoLista(new ArrayList<>(){{
             add(new Vertice("João"));
             add(new Vertice("Maria"));
             add(new Vertice("José"));
