@@ -81,10 +81,23 @@ public class DigrafoLista extends GrafoAbstrato{
     @Override
     public int recuperaIndiceProximoVesticeConectado(Vertice vertice, int arestaAtual) {
         int indiceVertice = vertices.indexOf(vertice);
-        if(arestaAtual >= listaDeAdjacencia.get(indiceVertice).size()){
-            return -1;
+        int indiceDoVerticeAtualNaListaDeAdjacencia = 0;
+        Vertice destino = listaDeAdjacencia.get(indiceVertice)
+                .get(indiceDoVerticeAtualNaListaDeAdjacencia).getDestino();
+
+        while (destino != vertices.get(arestaAtual)){
+            indiceDoVerticeAtualNaListaDeAdjacencia++;
+            destino = listaDeAdjacencia.get(indiceVertice)
+                    .get(indiceDoVerticeAtualNaListaDeAdjacencia).getDestino();
+        }
+        indiceDoVerticeAtualNaListaDeAdjacencia++;
+
+        if(indiceDoVerticeAtualNaListaDeAdjacencia < listaDeAdjacencia.get(indiceVertice).size()){
+            destino = listaDeAdjacencia.get(indiceVertice)
+                    .get(indiceDoVerticeAtualNaListaDeAdjacencia).getDestino();
+            return vertices.indexOf(destino);
         }else{
-            return ++arestaAtual;
+            return -1;
         }
     }
 
