@@ -1,9 +1,16 @@
 package main.grafo;
 
 public class Aresta {
-    int valor;
+    int peso;
+    Vertice destino;
 
-    public Aresta(int valor) {
-        this.valor = valor;
+    public Aresta(int peso) {
+        this.peso = peso;
+        this.destino = null;
+    }
+
+    public Aresta(int peso, Vertice destino) {
+        this.peso = peso;
+        this.destino = destino;
     }
 }
