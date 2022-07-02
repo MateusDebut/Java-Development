@@ -10,7 +10,7 @@ public interface GraphInterface {
     boolean arestaExiste(Vertice origem, Vertice destino);
     boolean possuiAlgumaAresta(Vertice vertice);
     int recuperaIndicePrimeiroVerticesConectados(Vertice vertice);
-    int recuperaIndiceProximoVesticeConectado(Vertice vertice, Vertice arestaAtual);
+    int recuperaIndiceProximoVesticeConectado(Vertice vertice, int arestaAtual);
     String toString();
     void printInGraphViz(String nomeArquivo);
 }
