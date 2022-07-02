@@ -13,4 +13,6 @@ public interface GraphInterface {
     int recuperaIndiceProximoVesticeConectado(Vertice vertice, int arestaAtual);
     String toString();
     void printInGraphViz(String nomeArquivo);
+
+    float recuperaDistancia(Vertice origem, Vertice destino);
 }

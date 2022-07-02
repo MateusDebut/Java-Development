@@ -95,4 +95,9 @@ public class DigrafoMatriz extends GrafoAbstrato {
     public void printInGraphViz(String nomeArquivo) {
 
     }
+
+    @Override
+    public float recuperaDistancia(Vertice origem, Vertice destino) {
+        return matrizDeAdjacencia[vertices.indexOf(origem)][vertices.indexOf(destino)].getPeso();
+    }
 }

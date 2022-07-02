@@ -122,4 +122,15 @@ public class DigrafoLista extends GrafoAbstrato{
     public void printInGraphViz(String nomeArquivo) {
 
     }
+
+    @Override
+    public float recuperaDistancia(Vertice origem, Vertice destino) {
+        int indiceOrigem = vertices.indexOf(origem);
+        for (int i = 0; i < listaDeAdjacencia.get(indiceOrigem).size(); i++) {
+            if(listaDeAdjacencia.get(indiceOrigem).get(i).getDestino() == destino){
+                return listaDeAdjacencia.get(indiceOrigem).get(i).getPeso();
+            }
+        }
+        return 0;
+    }
 }
