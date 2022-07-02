@@ -1,8 +1,8 @@
-package main.java;
+package main.grafo;
 
 import java.util.List;
 
-public class DigrafoMatriz extends GrafoAbstrato{
+public class DigrafoMatriz extends GrafoAbstrato {
 
     Aresta[][] matrizDeAdjacencia;
 
@@ -32,28 +32,28 @@ public class DigrafoMatriz extends GrafoAbstrato{
     }
 
     @Override
-    public void adicionarAresta(int origem, int destino) {
+    public void adicionarAresta(Vertice origem, Vertice destino) {
         if(!arestaExiste(origem, destino)){
-            matrizDeAdjacencia[origem][destino] = new Aresta(1);
+            matrizDeAdjacencia[vertices.indexOf(origem)][vertices.indexOf(destino)] = new Aresta(1);
         }
     }
 
     @Override
-    public void removerAresta(int origem, int destino) {
+    public void removerAresta(Vertice origem, Vertice destino) {
         if(arestaExiste(origem, destino)){
-            matrizDeAdjacencia[origem][destino] = null;
+            matrizDeAdjacencia[vertices.indexOf(origem)][vertices.indexOf(destino)] = null;
         }
     }
 
     @Override
-    public boolean arestaExiste(int origem, int destino) {
-        return matrizDeAdjacencia[origem][destino] != null;
+    public boolean arestaExiste(Vertice origem, Vertice destino) {
+        return matrizDeAdjacencia[vertices.indexOf(origem)][vertices.indexOf(destino)] != null;
     }
 
     @Override
-    public boolean possuiAlgumaAresta(int vertice) {
+    public boolean possuiAlgumaAresta(Vertice vertice) {
         for (int i = 0; i < numeroDeVertices; i++) {
-            if (matrizDeAdjacencia[vertice][i] != null){
+            if (matrizDeAdjacencia[vertices.indexOf(vertice)][i] != null){
                 return true;
             }
         }
@@ -61,14 +61,14 @@ public class DigrafoMatriz extends GrafoAbstrato{
     }
 
     @Override
-    public int recuperaIndicePrimeiroVerticesConectados(int vertice) {
-        return recuperaIndiceProximoVesticeConectado(vertice, 0);
+    public int recuperaIndicePrimeiroVerticesConectados(Vertice vertice) {
+        return recuperaIndiceProximoVesticeConectado(vertice, vertices.get(0));
     }
 
     @Override
-    public int recuperaIndiceProximoVesticeConectado(int vertice, int arestaAtual) {
-        for (int i = arestaAtual; i < numeroDeVertices; i++) {
-            if(arestaExiste(vertice, i)){
+    public int recuperaIndiceProximoVesticeConectado(Vertice vertice, Vertice arestaAtual) {
+        for (int i = vertices.indexOf(arestaAtual); i < numeroDeVertices; i++) {
+            if(arestaExiste(vertice, vertices.get(i))){
                 return i;
             }
         }
@@ -80,7 +80,7 @@ public class DigrafoMatriz extends GrafoAbstrato{
         for (int i = 0; i < numeroDeVertices; i++) {
             stringBuilder.append(i).append(": ");
             for (int j = 0; j < numeroDeVertices; j++) {
-                if(arestaExiste(i,j)){
+                if(arestaExiste(vertices.get(i),vertices.get(j))){
                     stringBuilder.append(matrizDeAdjacencia[i][j].valor).append(" ");
                 }else{
                     stringBuilder.append(0 + " ");

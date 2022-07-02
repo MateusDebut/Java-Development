@@ -1,4 +1,4 @@
-package main.java;
+package main.grafo;
 
 public class Aresta {
     int valor;
