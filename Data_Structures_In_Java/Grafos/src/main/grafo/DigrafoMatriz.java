@@ -81,7 +81,7 @@ public class DigrafoMatriz extends GrafoAbstrato {
             stringBuilder.append(i).append(": ");
             for (int j = 0; j < numeroDeVertices; j++) {
                 if(arestaExiste(vertices.get(i),vertices.get(j))){
-                    stringBuilder.append(matrizDeAdjacencia[i][j].peso).append(" ");
+                    stringBuilder.append(matrizDeAdjacencia[i][j].getPeso()).append(" ");
                 }else{
                     stringBuilder.append(0 + " ");
                 }

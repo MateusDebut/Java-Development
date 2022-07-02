@@ -38,7 +38,7 @@ public class DigrafoLista extends GrafoAbstrato{
         int indiceOrigem = vertices.indexOf(origem);
         List<Aresta> arestasOrigem = listaDeAdjacencia.get(indiceOrigem);
         for (int i = arestasOrigem.size()-1; i >= 0; i--) {
-            if(arestasOrigem.get(i).destino == destino){
+            if(arestasOrigem.get(i).getDestino() == destino){
                 arestasOrigem.remove(i);
             }
         }
@@ -49,7 +49,7 @@ public class DigrafoLista extends GrafoAbstrato{
         int indiceOrigem = vertices.indexOf(origem);
         List<Aresta> arestasOrigem = listaDeAdjacencia.get(indiceOrigem);
         for (int i = 0; i < arestasOrigem.size(); i++) {
-            if(arestasOrigem.get(i).destino == destino){
+            if(arestasOrigem.get(i).getDestino() == destino){
                 return true;
             }
         }
@@ -65,7 +65,7 @@ public class DigrafoLista extends GrafoAbstrato{
 
         for (int i = 0; i < numeroDeVertices; i++) {
             for (int j = 0; j < listaDeAdjacencia.get(i).size(); j++) {
-                if(listaDeAdjacencia.get(i).get(j).destino == vertice){
+                if(listaDeAdjacencia.get(i).get(j).getDestino() == vertice){
                     return true;
                 }
             }
@@ -93,7 +93,7 @@ public class DigrafoLista extends GrafoAbstrato{
         for (int i = 0; i < numeroDeVertices; i++) {
             stringBuilder.append(i).append(": ");
             for (int j = 0; j < listaDeAdjacencia.get(i).size(); j++) {
-                stringBuilder.append(listaDeAdjacencia.get(i).get(j).peso).append(" ");
+                stringBuilder.append(listaDeAdjacencia.get(i).get(j).getPeso()).append(" ");
             }
             stringBuilder.append("\n");
         }
