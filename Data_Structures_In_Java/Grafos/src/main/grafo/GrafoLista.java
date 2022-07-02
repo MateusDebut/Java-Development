@@ -10,10 +10,8 @@ public class GrafoLista extends DigrafoLista{
 
     @Override
     public void adicionarAresta(Vertice origem, Vertice destino) {
-        int indiceOrigem = vertices.indexOf(origem);
-        int indiceDestino = vertices.indexOf(destino);
-        listaDeAdjacencia.get(indiceOrigem).add(new Aresta(1, destino));
-        listaDeAdjacencia.get(indiceDestino).add(new Aresta(1, origem));
+        super.adicionarAresta(origem, destino);
+        super.adicionarAresta(destino, origem);
     }
 
     @Override
