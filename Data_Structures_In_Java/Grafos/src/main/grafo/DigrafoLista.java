@@ -75,7 +75,12 @@ public class DigrafoLista extends GrafoAbstrato{
 
     @Override
     public int recuperaIndicePrimeiroVerticesConectados(Vertice vertice) {
-        return recuperaIndiceProximoVesticeConectado(vertice, 0);
+        if(listaDeAdjacencia.get(vertices.indexOf(vertice)).isEmpty()){
+            return -1;
+        }else{
+            return vertices.
+                    indexOf(listaDeAdjacencia.get(vertices.indexOf(vertice)).get(0).getDestino());
+        }
     }
 
     @Override
