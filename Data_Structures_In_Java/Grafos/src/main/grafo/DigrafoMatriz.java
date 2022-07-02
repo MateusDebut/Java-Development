@@ -62,11 +62,11 @@ public class DigrafoMatriz extends GrafoAbstrato {
 
     @Override
     public int recuperaIndicePrimeiroVerticesConectados(Vertice vertice) {
-        return recuperaIndiceProximoVesticeConectado(vertice, vertices.get(0));
+        return recuperaIndiceProximoVesticeConectado(vertice, 0);
     }
 
     @Override
-    public int recuperaIndiceProximoVesticeConectado(Vertice vertice, Vertice arestaAtual) {
+    public int recuperaIndiceProximoVesticeConectado(Vertice vertice, int arestaAtual) {
         for (int i = vertices.indexOf(arestaAtual); i < numeroDeVertices; i++) {
             if(arestaExiste(vertice, vertices.get(i))){
                 return i;
@@ -81,7 +81,7 @@ public class DigrafoMatriz extends GrafoAbstrato {
             stringBuilder.append(i).append(": ");
             for (int j = 0; j < numeroDeVertices; j++) {
                 if(arestaExiste(vertices.get(i),vertices.get(j))){
-                    stringBuilder.append(matrizDeAdjacencia[i][j].valor).append(" ");
+                    stringBuilder.append(matrizDeAdjacencia[i][j].peso).append(" ");
                 }else{
                     stringBuilder.append(0 + " ");
                 }
