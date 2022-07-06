@@ -19,13 +19,13 @@ public class EstatisticasCovid {
     @CsvBindByName
     public double Long_;
     @CsvBindByName
-    public long Confirmed;
+    public int Confirmed;
     @CsvBindByName
-    public long Deaths;
+    public int Deaths;
     @CsvBindByName
-    public long Recovered;
+    public int Recovered;
     @CsvBindByName
-    public long Active;
+    public int Active;
     @CsvBindByName
     public String Combined_Key;
     @CsvBindByName
