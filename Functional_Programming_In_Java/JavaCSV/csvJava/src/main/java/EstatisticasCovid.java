@@ -35,21 +35,21 @@ public class EstatisticasCovid {
 
     @Override
     public String toString() {
-        return "EstatisticasCovid{" +
-                "FIPS='" + fips + '\'' +
-                ", Admin2='" + Admin2 + '\'' +
-                ", Province_State='" + Province_State + '\'' +
-                ", Country_Region='" + Country_Region + '\'' +
-                ", Last_Update='" + Last_Update + '\'' +
-                ", Lat=" + Lat +
-                ", Long_=" + Long_ +
-                ", Confirmed=" + Confirmed +
-                ", Deaths=" + Deaths +
-                ", Recovered=" + Recovered +
-                ", Active=" + Active +
-                ", Combined_Key='" + Combined_Key + '\'' +
-                ", Incident_Rate=" + Incident_Rate +
-                ", Case_Fatality_Ratio=" + Case_Fatality_Ratio +
-                "}\n";
+        return "EstatisticasCovid{" + "\n" +
+                "\tFIPS=" + fips + "\n" +
+                "\tAdmin2=" + Admin2 + "\n" +
+                "\tProvince_State=" + Province_State + "\n" +
+                "\tCountry_Region=" + Country_Region + "\n" +
+                "\tLast_Update=" + Last_Update + "\n" +
+                "\tLat=" + Lat + "\n" +
+                "\tLong_=" + Long_ + "\n" +
+                "\tConfirmed=" + Confirmed + "\n" +
+                "\tDeaths=" + Deaths + "\n" +
+                "\tRecovered=" + Recovered + "\n" +
+                "\tActive=" + Active + "\n" +
+                "\tCombined_Key=" + Combined_Key + "\n" +
+                "\tIncident_Rate=" + Incident_Rate + "\n" +
+                "\tCase_Fatality_Ratio=" + Case_Fatality_Ratio + "\n" +
+                "}";
     }
 }

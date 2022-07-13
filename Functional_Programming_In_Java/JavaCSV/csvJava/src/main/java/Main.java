@@ -10,12 +10,18 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-        Reader reader = Files.newBufferedReader(Paths.get("src/main/resources/file.csv"));
+        String nomeArquivo = args[0];
+
+        Reader reader = Files.newBufferedReader(Paths.get(nomeArquivo));
 
         CsvToBean<EstatisticasCovid> csvToBean = new CsvToBeanBuilder(reader)
                 .withType(EstatisticasCovid.class)
                 .build();
         List<EstatisticasCovid> estatisticasCovid = csvToBean.parse();
+
+        System.out.println("----------------------------------------------------");
+
+        System.out.println("Três países com os maiores valores de \"Confirmed\" em ordem alfabética\n");
 
         // Três países com os maiores valores de "Confirmed" em ordem alfabética
         estatisticasCovid
@@ -25,7 +31,10 @@ public class Main {
                 .sorted((o1, o2) -> o1.Country_Region.compareTo(o2.Country_Region))
                 .forEach(dado -> System.out.println(dado));
 
+        System.out.println("----------------------------------------------------");
 
+        System.out.printf("a soma dos \"Deaths\" dos cinco países com menores valores de \"Confirmed\"" +
+                " Dentre os dez países com maiores valores de \"Active\": ");
         int resultado = estatisticasCovid
                 .stream()
                 .sorted((o1, o2) -> (int) (o2.Active - o1.Active))
@@ -34,9 +43,11 @@ public class Main {
                 .limit(5)
                 .mapToInt(o -> o.Deaths)
                 .sum();
-        System.out.println("a soma dos \"Deaths\" dos " +
-                "cinco países com menores valores de \"Confirmed\", " +
-                        "Dentre os dez países com maiores valores de \"Active\": "+ resultado + "\n");
+        System.out.println(resultado + "\n");
+
+        System.out.println("----------------------------------------------------");
+
+        System.out.printf("O maior valor de \"Deaths\" entre os países do hemisfério sul\n");
 
         estatisticasCovid
                 .stream()
@@ -45,6 +56,10 @@ public class Main {
                 .limit(1)
                 .forEach(o -> System.out.println(o));
 
+        System.out.println("----------------------------------------------------");
+
+        System.out.printf("O maior valor de \"Deaths\" entre os países do hemisfério norte\n");
+
         estatisticasCovid
                 .stream()
                 .filter(o -> o.Lat > 0)
@@ -52,13 +67,15 @@ public class Main {
                 .limit(1)
                 .forEach(o -> System.out.println(o));
 
+        System.out.println("----------------------------------------------------");
+
         int soma = estatisticasCovid
                 .stream()
                 .filter(o -> o.Confirmed >= 1000000)
                 .mapToInt(o -> o.Active)
                 .sum();
 
-        System.out.println("A soma de \" Active\" de todos os países em que \"Confirmed\" é maior o igual que " +
+        System.out.println("A soma de \"Active\" de todos os países em que \"Confirmed\" é maior o igual que " +
                 "1.000.000: " + soma);
     }
 }
