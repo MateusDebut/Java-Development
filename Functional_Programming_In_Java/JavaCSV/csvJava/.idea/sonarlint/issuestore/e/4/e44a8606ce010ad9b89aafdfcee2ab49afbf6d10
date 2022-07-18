@@ -1,0 +1,54 @@
+
+J
+java:S3740"/Provide the parametrized type for this generic.(ñá¨²ûÿÿÿÿ
+ª
+java:S1192"”Define a constant instead of duplicating this literal "-----------------------------------------------------------------------------------" 5 times.(üĞÛ
+±
+java:S1192"•Define a constant instead of duplicating this literal "-----------------------------------------------------------------------------------
+" 5 times.(ÓÎÏõúÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ƒÇãˆúÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ö¢Ûœşÿÿÿÿ
+M	java:S106"9Replace this use of System.out or System.err by a logger.(¯Ä‚I
+M	java:S106"9Replace this use of System.out or System.err by a logger.(üĞÛ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ÓÎÏõúÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(¬«ÌÎ
+A
+java:S1905#"&Remove this unnecessary cast to "int".(ÏÄ”¾úÿÿÿÿ
+[
+java:S1612&"@Replace this lambda with method reference 'System.out::println'.(ğÏ‰ğøÿÿÿÿ
+S	java:S106&"9Replace this use of System.out or System.err by a logger.(ğÏ‰ğøÿÿÿÿ
+M	java:S106("9Replace this use of System.out or System.err by a logger.(üĞÛ
+S	java:S106)"9Replace this use of System.out or System.err by a logger.(ÓÎÏõúÿÿÿÿ
+N	java:S106+"9Replace this use of System.out or System.err by a logger.(ŒìÉ½
+<
+java:S1905/"&Remove this unnecessary cast to "int".(¡ŒË
+A
+java:S19051"&Remove this unnecessary cast to "int".(îÁ¦¡şÿÿÿÿ
+N	java:S1065"9Replace this use of System.out or System.err by a logger.(¿ÙÉ
+M	java:S1067"9Replace this use of System.out or System.err by a logger.(üĞÛ
+S	java:S1068"9Replace this use of System.out or System.err by a logger.(ÓÎÏõúÿÿÿÿ
+g
+java:S3457:"Q%n should be used in place of \n to produce the platform-specific line separator.(ÄİËâ
+;
+java:S3457:"%String contains no format specifiers.(ÄİËâ
+N	java:S106:"9Replace this use of System.out or System.err by a logger.(ÄİËâ
+<
+java:S1905?"&Remove this unnecessary cast to "int".(ø³ò¡
+U
+java:S1612A"@Replace this lambda with method reference 'System.out::println'.(è
+M	java:S106A"9Replace this use of System.out or System.err by a logger.(è
+M	java:S106C"9Replace this use of System.out or System.err by a logger.(üĞÛ
+S	java:S106D"9Replace this use of System.out or System.err by a logger.(ÓÎÏõúÿÿÿÿ
+g
+java:S3457F"Q%n should be used in place of \n to produce the platform-specific line separator.(É¡¿
+;
+java:S3457F"%String contains no format specifiers.(É¡¿
+N	java:S106F"9Replace this use of System.out or System.err by a logger.(É¡¿
+<
+java:S1905K"&Remove this unnecessary cast to "int".(ø³ò¡
+U
+java:S1612M"@Replace this lambda with method reference 'System.out::println'.(è
+M	java:S106M"9Replace this use of System.out or System.err by a logger.(è
+M	java:S106O"9Replace this use of System.out or System.err by a logger.(üĞÛ
+S	java:S106P"9Replace this use of System.out or System.err by a logger.(ÓÎÏõúÿÿÿÿ
+S	java:S106X"9Replace this use of System.out or System.err by a logger.(²ˆıÿÿÿÿ

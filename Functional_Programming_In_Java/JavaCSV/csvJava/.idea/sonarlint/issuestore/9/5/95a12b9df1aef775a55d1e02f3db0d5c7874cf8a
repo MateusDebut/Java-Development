@@ -1,0 +1,15 @@
+
+k	java:S116
+"QRename this field "Admin2" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»Õ«ºüÿÿÿÿ
+s	java:S116"YRename this field "Province_State" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŞêÈıÿÿÿÿ
+s	java:S116"YRename this field "Country_Region" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(û½ëúøÿÿÿÿ
+p	java:S116"VRename this field "Last_Update" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æÓÉ¸ûÿÿÿÿ
+c	java:S116"NRename this field "Lat" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(şá‹
+d	java:S116"PRename this field "Long_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ğ¼ó	
+n	java:S116"TRename this field "Confirmed" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼³Î©ÿÿÿÿÿ
+f	java:S116"QRename this field "Deaths" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÍÈ½Û
+n	java:S116"TRename this field "Recovered" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ó†ñ¥ùÿÿÿÿ
+f	java:S116"QRename this field "Active" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‡¯î
+q	java:S116"WRename this field "Combined_Key" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼Ğ¿÷ıÿÿÿÿ
+r	java:S116 "XRename this field "Incident_Rate" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì¤ƒ¦ıÿÿÿÿ
+x	java:S116""^Rename this field "Case_Fatality_Ratio" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İôó„ÿÿÿÿÿ

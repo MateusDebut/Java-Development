@@ -1,0 +1,11 @@
+
+6
+java:S2129" Remove this "String" constructor(‚Ï¢
+N	java:S106"9Replace this use of System.out or System.err by a logger.(˜¥”£
+S	java:S106"9Replace this use of System.out or System.err by a logger.(âöÓÒşÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ˆáÔûÿÿÿÿ
+S	java:S106	"9Replace this use of System.out or System.err by a logger.(©òßŸüÿÿÿÿ
+S	java:S106
+"9Replace this use of System.out or System.err by a logger.(’˜äşÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(êúæ
+M	java:S106"9Replace this use of System.out or System.err by a logger.(¼šš 
