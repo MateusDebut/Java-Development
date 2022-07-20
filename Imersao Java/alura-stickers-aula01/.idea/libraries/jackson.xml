@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="jackson">
+    <CLASSES>
+      <root url="file://$MAVEN_REPOSITORY$/com/fasterxml/jackson" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
