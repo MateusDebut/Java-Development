@@ -1,0 +1,20 @@
+<component name="libraryTable">
+  <library name="marvinformatics.feign.jackson1" type="repository">
+    <properties maven-id="com.marvinformatics.feign:feign-jackson1:0.1" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/marvinformatics/feign/feign-jackson1/0.1/feign-jackson1-0.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/netflix/feign/feign-core/8.16.2/feign-core-8.16.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jvnet/animal-sniffer-annotation/1.0/animal-sniffer-annotation-1.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/codehaus/jackson/jackson-core-asl/1.9.9/jackson-core-asl-1.9.9.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/codehaus/jackson/jackson-mapper-asl/1.9.9/jackson-mapper-asl-1.9.9.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/marvinformatics/feign/feign-jackson1/0.1/feign-jackson1-0.1-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/netflix/feign/feign-core/8.16.2/feign-core-8.16.2-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jvnet/animal-sniffer-annotation/1.0/animal-sniffer-annotation-1.0-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/codehaus/jackson/jackson-core-asl/1.9.9/jackson-core-asl-1.9.9-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/codehaus/jackson/jackson-mapper-asl/1.9.9/jackson-mapper-asl-1.9.9-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
