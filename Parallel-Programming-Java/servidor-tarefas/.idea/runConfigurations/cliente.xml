@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="cliente" type="Application" factoryName="Application" singleton="false">
+    <option name="MAIN_CLASS_NAME" value="cliente.ClienteTarefas" />
+    <module name="servidor-tarefas" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
