@@ -1,6 +1,7 @@
 package cliente;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Scanner;
@@ -8,18 +9,17 @@ import java.util.Scanner;
 public class ClienteTarefas {
 
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         Socket socket = new Socket("localhost", 12345);
-        System.out.println("Conexão estabelecida");
+        System.out.println("Conexão estabelecida ");
 
-        PrintStream saida = new PrintStream(socket.getOutputStream());
-        saida.println("c1");
+        Thread threadEnvioDados = new Thread(new TarefaEnvioDados(socket));
+        threadEnvioDados.start();
 
-        Scanner scanner = new Scanner(System.in);
-        scanner.nextLine();
+        Thread threadRecebimentoDados = new Thread(new TarefaRecebimentoDados(socket));
+        threadRecebimentoDados.start();
 
-        saida.close();
-        scanner.close();
-        socket.close();
+        threadEnvioDados.join();
+        System.out.println("fechando o socket");
     }
 }
